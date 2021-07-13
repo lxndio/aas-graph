@@ -15,7 +15,10 @@ algorithms = {
     "Naive": "naive",
     "KMP": "kmp",
     "Classic KMP": "kmp-classic",
-    "Shift-And": "shift-and"
+    "Shift-And": "shift-and",
+    "Weak Boyer Moore": "wbm",
+    "Weak Memorizing Boyer Moore": "wmbm",
+    "Weak Turbo Boyer Moore": "wtbm"
 }
 textSources = {
     "Randomly Generated": "--tr",
@@ -115,7 +118,7 @@ if 'measurements' in st.session_state:
     #st.table(st.session_state.measurements[['algorithm', 'pattern_length', 'time_ms']])
 
     fig, ax = plt.subplots()
-    sns.lineplot(x='pattern_length', y='time_ms', hue='algorithm', data=st.session_state.chartData[0], ax=ax)
+    sns.lineplot(x='pattern_length', y='time_ms', hue='algorithm', data=st.session_state.chartData[0], ci=68, ax=ax)
     st.pyplot(fig)
 
     col1, col2 = st.beta_columns(2)
